@@ -314,13 +314,13 @@ p + p { margin-top: 0.9rem; }
 
 @media (prefers-reduced-motion: no-preference) {
   .exploded .plate {
-    animation: take-apart 1.3s var(--ease-out) 0.25s both;
+    animation: take-apart 1.3s var(--ease-out) 0.25s backwards;
   }
   .exploded .p1 { --from: 66px; }
   .exploded .p2 { --from: 22px; }
   .exploded .p3 { --from: -22px; }
   .exploded .p4 { --from: -66px; }
-  .exploded .leaders { animation: appear 0.6s ease-out 1.1s both; }
+  .exploded .leaders { animation: appear 0.6s ease-out 1.1s backwards; }
 }
 
 @keyframes take-apart {
@@ -332,31 +332,74 @@ p + p { margin-top: 0.9rem; }
 
 /* 2. Parts list */
 
-.bom {
-  width: 100%;
-  border-collapse: collapse;
+.note {
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+/* Shared: expandable rows with a plus/minus box */
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::after {
+  content: "+";
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
   border: 1px solid var(--frame);
-  font-size: 0.975rem;
-}
-.bom th,
-.bom td {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--rule);
-  text-align: left;
-  vertical-align: top;
-}
-.bom thead th {
-  background: var(--paper-2);
-  border-bottom-color: var(--frame);
   font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--signal-ink);
+  justify-self: end;
+  transition: background-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+}
+details[open] > summary::after {
+  content: "\2212";
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--paper);
+}
+details > summary:hover { background: var(--paper-2); }
+details > summary:focus-visible { outline: 2px solid var(--signal); outline-offset: -2px; }
+@media (prefers-reduced-motion: no-preference) {
+  details[open] > :not(summary) { animation: unfold 0.45s var(--ease-out); }
+}
+@keyframes unfold {
+  from { opacity: 0; transform: translateY(-6px); }
+}
+
+.parts { max-width: 62rem; border-top: 1px solid var(--frame); }
+.part { border-bottom: 1px solid var(--rule); transition: background-color 0.3s var(--ease-out); }
+.part summary {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(9rem, 13rem) minmax(0, 1fr) 1.6rem;
+  align-items: center;
+  gap: 0.2rem 1rem;
+  padding: 0.8rem 0.5rem;
+}
+.part-name { font-weight: 650; }
+.part-brief { color: var(--ink-2); font-size: 0.925rem; }
+.part-body { padding: 0 0.5rem 1.1rem 4rem; max-width: 72ch; }
+.part-where { margin-top: 0.55rem; font-size: 0.875rem; color: var(--ink-2); }
+.part-where span,
+.output > span {
+  margin-right: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-2);
 }
-.bom tbody th { font-weight: 650; width: 12.5rem; }
-.bom td:first-child { width: 3.75rem; }
+.part[open] { background: var(--paper-2); }
+@media (max-width: 40rem) {
+  .part summary { grid-template-columns: 2.25rem minmax(0, 1fr) 1.6rem; }
+  .part-brief { grid-column: 2; grid-row: 2; }
+  .part summary::after { grid-column: 3; grid-row: 1 / span 2; }
+  .part-body { padding-left: 3.75rem; }
+}
+
 .callout {
   display: inline-grid;
   place-items: center;
@@ -369,95 +412,42 @@ p + p { margin-top: 0.9rem; }
   line-height: 1;
   color: var(--signal-ink);
 }
-.ns {
-  display: block;
-  margin-top: 0.15rem;
-  font-weight: 400;
-  font-size: 0.8rem;
-  color: var(--ink-2);
-}
-
-@media (max-width: 40rem) {
-  .bom thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-  }
-  .bom,
-  .bom tbody { display: block; border: 0; }
-  .bom tr {
-    display: grid;
-    grid-template-columns: 2.75rem minmax(0, 1fr);
-    gap: 0.2rem 0.75rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--rule);
-  }
-  .bom tr:last-child { border-bottom: 1px solid var(--rule); }
-  .bom th,
-  .bom td { display: block; padding: 0; border: 0; width: auto; }
-  .bom td:first-child { grid-row: span 2; width: auto; }
-  .bom tbody th { width: auto; }
-}
 
 /* 3. Operating procedure */
 
-.note {
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
-  color: var(--ink-2);
-}
 .procedure {
   margin: 0;
   padding: 0;
   list-style: none;
-  counter-reset: step;
-  display: grid;
-  gap: 0;
+  max-width: 62rem;
+  border-top: 1px solid var(--frame);
 }
-.procedure li {
-  counter-increment: step;
+.procedure > li { border-bottom: 1px solid var(--rule); }
+.procedure summary {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
-  align-content: start;
-  column-gap: 1rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--rule);
+  grid-template-columns: 4.5rem minmax(0, 1fr) 1.6rem;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  padding: 1rem 0.5rem;
 }
-.procedure li:last-child { border-bottom: 1px solid var(--rule); }
-.procedure li::before {
-  content: "Step " counter(step);
-  grid-row: span 3;
-  padding-top: 0.25rem;
+.step-no {
+  grid-row: span 2;
   font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--signal-ink);
 }
-.procedure li > * { grid-column: 2; }
-.procedure h3 + p { margin-top: 0.35rem; max-width: 62ch; }
-.output {
-  margin-top: 0.6rem;
-  font-size: 0.925rem;
-  font-weight: 600;
-}
-.output span {
-  margin-right: 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-@media (min-width: 72rem) {
-  .procedure { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
-  .procedure li:nth-last-child(2) { border-bottom: 1px solid var(--rule); }
-}
+.procedure h3 { grid-column: 2; }
+.procedure .output { grid-column: 2; font-size: 0.925rem; font-weight: 600; }
+.procedure summary::after { grid-column: 3; grid-row: 1 / span 2; align-self: start; }
+.procedure details[open] { background: var(--paper-2); }
+.step-body { padding: 0 0.5rem 1.15rem 6rem; max-width: 72ch; }
 @media (max-width: 30rem) {
-  .procedure li { grid-template-columns: minmax(0, 1fr); }
-  .procedure li::before { grid-row: auto; padding: 0 0 0.2rem; }
-  .procedure li > * { grid-column: 1; }
+  .procedure summary { grid-template-columns: minmax(0, 1fr) 1.6rem; }
+  .step-no { grid-row: auto; grid-column: 1; }
+  .procedure h3,
+  .procedure .output { grid-column: 1; }
+  .procedure summary::after { grid-column: 2; grid-row: 1 / span 3; }
+  .step-body { padding-left: 0.5rem; }
 }
 
 /* 4. Wiring diagram */
@@ -552,36 +542,40 @@ p + p { margin-top: 0.9rem; }
 .servicelife .s-bar.sec { stroke: var(--signal); }
 .servicelife .s-start.sec,
 .servicelife .s-head.sec { fill: var(--signal); }
+.servicelife .s-row { transition: opacity 0.35s var(--ease-out); }
+.servicelife .s-cursor { stroke: var(--signal); stroke-width: 2; opacity: 0; transition: opacity 0.3s var(--ease-out); }
+.fig-servicelife:has(#rv-a:checked) .s-row:not(.on-a),
+.fig-servicelife:has(#rv-b:checked) .s-row:not(.on-b),
+.fig-servicelife:has(#rv-c:checked) .s-row:not(.on-c),
+.fig-servicelife:has(#rv-t:checked) .s-row:not(.on-t) { opacity: 0.16; }
+.fig-servicelife:has(#rv-a:checked) .cur-a,
+.fig-servicelife:has(#rv-b:checked) .cur-b,
+.fig-servicelife:has(#rv-c:checked) .cur-c,
+.fig-servicelife:has(#rv-t:checked) .cur-t { opacity: 1; }
 
-.revs,
-.maint {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid var(--frame);
-  font-size: 0.95rem;
+.revs { border-top: 1px solid var(--frame); max-width: 62rem; }
+.rev { border-bottom: 1px solid var(--rule); transition: background-color 0.3s var(--ease-out); }
+.rev summary {
+  display: grid;
+  grid-template-columns: 2.5rem 3.5rem minmax(0, 1fr) 1.6rem;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  padding: 0.8rem 0.5rem;
 }
-.revs th,
-.revs td,
-.maint th,
-.maint td {
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--rule);
-  text-align: left;
-  vertical-align: top;
+.rev-year { font-family: var(--mono); font-size: 0.85rem; color: var(--ink-2); }
+.rev-title { font-weight: 650; }
+.rev > p { padding: 0 0.5rem 1.1rem 8rem; max-width: 74ch; }
+.rev[open] { background: var(--paper-2); }
+.servicelife-wrap:has(#rv-a:checked) .rev-a,
+.servicelife-wrap:has(#rv-b:checked) .rev-b,
+.servicelife-wrap:has(#rv-c:checked) .rev-c { background: var(--hl); }
+@media (max-width: 40rem) {
+  .rev summary { grid-template-columns: 2.25rem minmax(0, 1fr) 1.6rem; }
+  .rev-year { grid-column: 2; grid-row: 1; }
+  .rev-title { grid-column: 2; grid-row: 2; }
+  .rev summary::after { grid-column: 3; grid-row: 1 / span 2; }
+  .rev > p { padding-left: 3.75rem; }
 }
-.revs thead th,
-.maint thead th {
-  background: var(--paper-2);
-  border-bottom-color: var(--frame);
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-.revs td:nth-child(1) { width: 3.75rem; }
-.revs td:nth-child(2) { width: 4.5rem; font-family: var(--mono); font-size: 0.85rem; }
 .revmark {
   display: inline-grid;
   place-items: center;
@@ -595,8 +589,31 @@ p + p { margin-top: 0.9rem; }
   line-height: 1;
   color: var(--paper);
 }
+
+.maint {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--frame);
+  font-size: 0.95rem;
+}
+.maint th,
+.maint td {
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.maint thead th {
+  background: var(--paper-2);
+  border-bottom-color: var(--frame);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
 @media (max-width: 40rem) {
-  .revs thead,
   .maint thead {
     position: absolute;
     width: 1px;
@@ -604,23 +621,10 @@ p + p { margin-top: 0.9rem; }
     overflow: hidden;
     clip-path: inset(50%);
   }
-  .revs,
-  .revs tbody,
   .maint,
   .maint tbody { display: block; border: 0; }
-  .revs tr {
-    display: grid;
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-    gap: 0.2rem 0.75rem;
-    padding: 0.9rem 0;
-    border-top: 1px solid var(--rule);
-  }
-  .revs tr:last-child,
-  .maint tr:last-child { border-bottom: 1px solid var(--rule); }
-  .revs td { display: block; padding: 0; border: 0; width: auto; }
-  .revs td:nth-child(1) { grid-row: span 2; width: auto; }
-  .revs td:nth-child(2) { width: auto; }
   .maint tr { display: block; padding: 0.8rem 0; border-top: 1px solid var(--rule); }
+  .maint tr:last-child { border-bottom: 1px solid var(--rule); }
   .maint th,
   .maint td { display: block; padding: 0; border: 0; }
   .maint th { font-weight: 650; margin-bottom: 0.15rem; }
@@ -753,24 +757,22 @@ p + p { margin-top: 0.9rem; }
 .stamp .st-big { font-size: 22px; letter-spacing: 0.04em; }
 .stamp .st-small { font-size: 8px; letter-spacing: 0.08em; }
 
-/* Hover a part, find it in the drawings */
+/* Open or hover a part, find it in the drawings */
 .exploded .face-t,
 .wiring .w-frame { transition: fill 0.3s var(--ease-out); }
-.bom tbody tr { transition: background-color 0.3s var(--ease-out); }
-.bom tbody tr:nth-child(-n + 4):hover,
-body:has(.exploded .p1:hover) .bom tbody tr:nth-child(1),
-body:has(.exploded .p2:hover) .bom tbody tr:nth-child(2),
-body:has(.exploded .p3:hover) .bom tbody tr:nth-child(3),
-body:has(.exploded .p4:hover) .bom tbody tr:nth-child(4) { background: var(--hl); }
-body:has(.bom tbody tr:nth-child(1):hover) .exploded .p1 .face-t,
-body:has(.bom tbody tr:nth-child(2):hover) .exploded .p2 .face-t,
-body:has(.bom tbody tr:nth-child(3):hover) .exploded .p3 .face-t,
-body:has(.bom tbody tr:nth-child(4):hover) .exploded .p4 .face-t,
-.exploded .plate:hover .face-t { fill: var(--hl); }
-body:has(.bom tbody tr:nth-child(1):hover) .wiring .a1,
-body:has(.bom tbody tr:nth-child(2):hover) .wiring .a2,
-body:has(.bom tbody tr:nth-child(3):hover) .wiring .a3,
-body:has(.bom tbody tr:nth-child(4):hover) .wiring .a4 { fill: var(--hl); fill-opacity: 0.6; }
+body:has(#part-1:hover, #part-1[open]) .exploded .p1 .face-t,
+body:has(#part-2:hover, #part-2[open]) .exploded .p2 .face-t,
+body:has(#part-3:hover, #part-3[open]) .exploded .p3 .face-t,
+body:has(#part-4:hover, #part-4[open]) .exploded .p4 .face-t,
+.exploded .plate-link:hover .face-t { fill: var(--hl); }
+body:has(#part-1:hover, #part-1[open]) .wiring .a1,
+body:has(#part-2:hover, #part-2[open]) .wiring .a2,
+body:has(#part-3:hover, #part-3[open]) .wiring .a3,
+body:has(#part-4:hover, #part-4[open]) .wiring .a4 { fill: var(--hl); fill-opacity: 0.6; }
+body:has(.plate-link:hover .p1) #part-1,
+body:has(.plate-link:hover .p2) #part-2,
+body:has(.plate-link:hover .p3) #part-3,
+body:has(.plate-link:hover .p4) #part-4 { background: var(--hl); }
 
 /* Fig. 4 */
 .offduty { display: grid; gap: 2rem; align-items: center; }
@@ -823,11 +825,207 @@ body:has(.bom tbody tr:nth-child(4):hover) .wiring .a4 { fill: var(--hl); fill-o
   .wiring-wide,
   .servicelife-wide { display: block; }
   main > section,
-  .bom tr,
-  .revs tr,
+  .part,
+  .rev,
   .maint tr,
   .procedure li { break-inside: avoid; }
   .exploded .plate,
   .exploded .leaders { animation: none; }
   a { color: var(--ink); text-decoration: none; }
+}
+
+
+/* Index tabs: a thumb index along the top of the sheet */
+.index {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--paper);
+  border-bottom: 1px solid var(--frame);
+}
+.index ol {
+  display: flex;
+  margin: 0;
+  padding: 0 var(--pad);
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+.index ol::-webkit-scrollbar { display: none; }
+.index li { flex: none; scroll-snap-align: start; }
+.index a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.7rem 0.85rem 0.65rem;
+  border-right: 1px solid var(--rule);
+  color: var(--ink-2);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: background-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+}
+.index li:first-child a { border-left: 1px solid var(--rule); }
+.index a:hover { background: var(--paper-2); color: var(--ink); }
+.index a:focus-visible { outline: 2px solid var(--signal); outline-offset: -2px; }
+.ix-no { font-family: var(--mono); font-size: 0.75rem; color: var(--signal-ink); }
+.ix-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  pointer-events: none;
+}
+.ix-progress span {
+  display: block;
+  height: 100%;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+@supports (animation-timeline: scroll()) {
+  .ix-progress span {
+    animation-name: ix-progress;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root block);
+  }
+  body { timeline-scope: --s1, --s2, --s3, --s4, --s5, --s6, --s7, --s8; }
+  main > section:nth-of-type(1) { view-timeline-name: --s1; }
+  main > section:nth-of-type(2) { view-timeline-name: --s2; }
+  main > section:nth-of-type(3) { view-timeline-name: --s3; }
+  main > section:nth-of-type(4) { view-timeline-name: --s4; }
+  main > section:nth-of-type(5) { view-timeline-name: --s5; }
+  main > section:nth-of-type(6) { view-timeline-name: --s6; }
+  main > section:nth-of-type(7) { view-timeline-name: --s7; }
+  main > section:nth-of-type(8) { view-timeline-name: --s8; }
+  .index a {
+    animation-name: ix-active;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+    animation-range: cover 30% cover 70%;
+  }
+  .index li:nth-child(1) a { animation-timeline: --s1; }
+  .index li:nth-child(2) a { animation-timeline: --s2; }
+  .index li:nth-child(3) a { animation-timeline: --s3; }
+  .index li:nth-child(4) a { animation-timeline: --s4; }
+  .index li:nth-child(5) a { animation-timeline: --s5; }
+  .index li:nth-child(6) a { animation-timeline: --s6; }
+  .index li:nth-child(7) a { animation-timeline: --s7; }
+  .index li:nth-child(8) a { animation-timeline: --s8; }
+}
+@keyframes ix-progress { to { transform: scaleX(1); } }
+@keyframes ix-active {
+  from, to { background: var(--hl); color: var(--ink); }
+}
+h2[id],
+.part-body[id] { scroll-margin-top: 4.5rem; }
+@media (prefers-reduced-motion: no-preference) {
+  h2:target .secno { animation: flag 1.4s var(--ease-out); }
+}
+@keyframes flag {
+  0%, 30% { color: var(--paper); background: var(--signal); }
+}
+
+/* Fig. 1: assembled or exploded */
+.fig-tools { display: flex; justify-content: flex-end; margin-bottom: 0.75rem; }
+.switch-input,
+.chips input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.switch-track {
+  position: relative;
+  width: 2.6rem;
+  height: 1.4rem;
+  border: 1px solid var(--frame);
+  border-radius: 1rem;
+  background: var(--paper-2);
+  transition: background-color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.switch-track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(1.4rem - 6px);
+  height: calc(1.4rem - 6px);
+  border-radius: 50%;
+  background: var(--frame);
+  transition: transform 0.35s var(--ease-out), background-color 0.3s var(--ease-out);
+}
+.switch-input:checked + .switch .switch-track { background: var(--signal); border-color: var(--signal); }
+.switch-input:checked + .switch .switch-track::after { transform: translateX(1.2rem); background: var(--paper); }
+.switch-input:focus-visible + .switch .switch-track { outline: 2px solid var(--signal); outline-offset: 2px; }
+.exploded .plate,
+.exploded .leaders { transition: transform 0.9s var(--ease-out), opacity 0.4s var(--ease-out); }
+.fig-explode:has(#assemble:checked) .exploded .p1 { transform: translateY(66px); }
+.fig-explode:has(#assemble:checked) .exploded .p2 { transform: translateY(22px); }
+.fig-explode:has(#assemble:checked) .exploded .p3 { transform: translateY(-22px); }
+.fig-explode:has(#assemble:checked) .exploded .p4 { transform: translateY(-66px); }
+.fig-explode:has(#assemble:checked) .exploded .leaders { opacity: 0; }
+.plate-link { cursor: pointer; }
+.plate-link:focus { outline: none; }
+.plate-link:focus-visible .face-t { stroke: var(--signal); stroke-width: 2.5; }
+
+/* Selector chips for Fig. 2 and Fig. 3 */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.chips legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.chips label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease-out), color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+}
+.chips label:hover { border-color: var(--frame); }
+.chips input:checked + label { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chips input:focus-visible + label { outline: 2px solid var(--signal); outline-offset: 2px; }
+
+.wiring .asm { transition: opacity 0.35s var(--ease-out); }
+.fig-wiring:has(#wf-1:checked) .wiring .asm:not(.asm-1),
+.fig-wiring:has(#wf-2:checked) .wiring .asm:not(.asm-2),
+.fig-wiring:has(#wf-3:checked) .wiring .asm:not(.asm-3),
+.fig-wiring:has(#wf-4:checked) .wiring .asm:not(.asm-4),
+.fig-wiring:has(#wf-w:checked) .wiring .asm:not(.asm-w),
+.fig-wiring:has(#wf-web:checked) .wiring .asm:not(.asm-web) { opacity: 0.14; }
+
+@media print {
+  .index,
+  .fig-tools,
+  .chips { display: none; }
+  details::details-content { content-visibility: visible; display: block; }
+  details > summary::after { display: none; }
 }
