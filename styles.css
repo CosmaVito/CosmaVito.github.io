@@ -697,3 +697,137 @@ p + p { margin-top: 0.9rem; }
     overflow-wrap: break-word;
   }
 }
+
+/* Personality: pictograms, stamp, cross-references, off-duty figure */
+
+:root { --hl: oklch(91% 0.06 50); }
+@media (prefers-color-scheme: dark) {
+  :root { --hl: oklch(33% 0.07 45); }
+}
+
+::selection { background: var(--hl); color: var(--ink); }
+
+.picto {
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-left: 0.5rem;
+  vertical-align: -0.38em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50% 50%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .picto { transition: transform 0.6s var(--ease-out); }
+  main > section:hover .picto-caliper { transform: translateX(3px); }
+  main > section:hover .picto-nut { transform: rotate(60deg); }
+  main > section:hover .picto-clipboard { transform: rotate(-8deg); }
+  main > section:hover .picto-plug { transform: translateY(2px); }
+  main > section:hover .picto-hourglass { transform: rotate(180deg); }
+  main > section:hover .picto-wrench { transform: rotate(-30deg); }
+  main > section:hover .picto-sticks { transform: rotate(12deg); }
+  main > section:hover .picto-envelope { transform: translateY(-2px); }
+}
+
+.tb-portrait { position: relative; }
+.stamp {
+  position: absolute;
+  right: calc(var(--pad) * -0.4);
+  bottom: calc(var(--pad) * 0.2);
+  width: clamp(3.6rem, 2.6rem + 3vw, 5.25rem);
+  height: auto;
+  color: var(--signal);
+  opacity: 0.9;
+  transform: rotate(-14deg);
+  pointer-events: none;
+}
+@media (prefers-color-scheme: light) {
+  .stamp { mix-blend-mode: multiply; }
+}
+.stamp .st-line { fill: none; stroke: currentColor; stroke-width: 2.4; }
+.stamp text { fill: currentColor; font-family: var(--mono); text-anchor: middle; }
+.stamp .st-ring { font-size: 9.6px; letter-spacing: 0.06em; text-anchor: start; }
+.stamp .st-big { font-size: 22px; letter-spacing: 0.04em; }
+.stamp .st-small { font-size: 8px; letter-spacing: 0.08em; }
+
+/* Hover a part, find it in the drawings */
+.exploded .face-t,
+.wiring .w-frame { transition: fill 0.3s var(--ease-out); }
+.bom tbody tr { transition: background-color 0.3s var(--ease-out); }
+.bom tbody tr:nth-child(-n + 4):hover,
+body:has(.exploded .p1:hover) .bom tbody tr:nth-child(1),
+body:has(.exploded .p2:hover) .bom tbody tr:nth-child(2),
+body:has(.exploded .p3:hover) .bom tbody tr:nth-child(3),
+body:has(.exploded .p4:hover) .bom tbody tr:nth-child(4) { background: var(--hl); }
+body:has(.bom tbody tr:nth-child(1):hover) .exploded .p1 .face-t,
+body:has(.bom tbody tr:nth-child(2):hover) .exploded .p2 .face-t,
+body:has(.bom tbody tr:nth-child(3):hover) .exploded .p3 .face-t,
+body:has(.bom tbody tr:nth-child(4):hover) .exploded .p4 .face-t,
+.exploded .plate:hover .face-t { fill: var(--hl); }
+body:has(.bom tbody tr:nth-child(1):hover) .wiring .a1,
+body:has(.bom tbody tr:nth-child(2):hover) .wiring .a2,
+body:has(.bom tbody tr:nth-child(3):hover) .wiring .a3,
+body:has(.bom tbody tr:nth-child(4):hover) .wiring .a4 { fill: var(--hl); fill-opacity: 0.6; }
+
+/* Fig. 4 */
+.offduty { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 60rem) {
+  .offduty { grid-template-columns: minmax(0, 1fr) minmax(0, 20rem); gap: 3rem; }
+}
+.offduty-art { display: block; width: 100%; max-width: 20rem; height: auto; margin-inline: auto; overflow: visible; }
+.fig-offduty figcaption { text-align: center; }
+.offduty-art .os-stick { stroke: var(--frame); stroke-width: 6; stroke-linecap: round; }
+.offduty-art .os-part { fill: var(--paper); stroke: var(--frame); stroke-width: 1.4; }
+.offduty-art .os-handle { fill: none; stroke: var(--frame); stroke-width: 6; stroke-linecap: round; }
+.offduty-art .os-axis { stroke: var(--signal); stroke-width: 1; stroke-dasharray: 8 3 2 3; opacity: 0.7; }
+.offduty-art .os-callouts line { stroke: var(--signal); stroke-width: 1; }
+.offduty-art .os-callouts circle { fill: var(--paper); stroke: var(--signal); stroke-width: 1.4; }
+.offduty-art .os-callouts text { fill: var(--signal-ink); font-family: var(--mono); font-size: 11px; text-anchor: middle; }
+.offduty-art g { transform-box: fill-box; transform-origin: 50% 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  .offduty-art .os-kettlebell,
+  .offduty-art .os-sticks,
+  .offduty-art .os-driver { transition: transform 0.5s var(--ease-out); }
+  .fig-offduty:hover .os-kettlebell { transform: translateY(-6px); }
+  .fig-offduty:hover .os-sticks { transform: rotate(-6deg); }
+  .fig-offduty:hover .os-driver { transform: rotate(14deg); }
+}
+
+@media (max-width: 30rem) {
+  .exploded .leaders text { font-size: 17px; }
+}
+
+/* Print: one clean drawing sheet */
+@media print {
+  :root {
+    --desk: oklch(97.6% 0.009 85);
+    --paper: oklch(97.6% 0.009 85);
+    --paper-2: oklch(94.6% 0.012 85);
+    --ink: oklch(25% 0.015 255);
+    --ink-2: oklch(44% 0.014 255);
+    --rule: oklch(86% 0.012 85);
+    --frame: oklch(35% 0.015 255);
+    --signal: oklch(63% 0.185 42);
+    --signal-ink: oklch(50% 0.16 40);
+    --plate-l: oklch(90.5% 0.012 85);
+    --plate-r: oklch(85% 0.013 85);
+  }
+  body { background: var(--paper); }
+  .sheet { margin: 0; max-width: none; }
+  .skip,
+  .wiring-narrow,
+  .servicelife-narrow { display: none; }
+  .wiring-wide,
+  .servicelife-wide { display: block; }
+  main > section,
+  .bom tr,
+  .revs tr,
+  .maint tr,
+  .procedure li { break-inside: avoid; }
+  .exploded .plate,
+  .exploded .leaders { animation: none; }
+  a { color: var(--ink); text-decoration: none; }
+}
