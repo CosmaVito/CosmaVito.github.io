@@ -129,7 +129,7 @@ a:focus-visible {
 }
 .tb-portrait img {
   display: block;
-  width: clamp(5rem, 3.5rem + 6vw, 9rem);
+  width: clamp(6rem, 4.6rem + 6vw, 9.5rem);
   height: auto;
   aspect-ratio: 1;
   object-fit: cover;
@@ -702,7 +702,7 @@ details > summary:focus-visible { outline: 2px solid var(--signal); outline-offs
   }
 }
 
-/* Personality: pictograms, stamp, cross-references, off-duty figure */
+/* Personality: stamp, cross-references, off-duty figure */
 
 :root { --hl: oklch(91% 0.06 50); }
 @media (prefers-color-scheme: dark) {
@@ -711,37 +711,13 @@ details > summary:focus-visible { outline: 2px solid var(--signal); outline-offs
 
 ::selection { background: var(--hl); color: var(--ink); }
 
-.picto {
-  display: inline-block;
-  width: 1.4rem;
-  height: 1.4rem;
-  margin-left: 0.5rem;
-  vertical-align: -0.38em;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transform-origin: 50% 50%;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .picto { transition: transform 0.6s var(--ease-out); }
-  main > section:hover .picto-caliper { transform: translateX(3px); }
-  main > section:hover .picto-nut { transform: rotate(60deg); }
-  main > section:hover .picto-clipboard { transform: rotate(-8deg); }
-  main > section:hover .picto-plug { transform: translateY(2px); }
-  main > section:hover .picto-hourglass { transform: rotate(180deg); }
-  main > section:hover .picto-wrench { transform: rotate(-30deg); }
-  main > section:hover .picto-sticks { transform: rotate(12deg); }
-  main > section:hover .picto-envelope { transform: translateY(-2px); }
-}
 
-.tb-portrait { position: relative; }
+.portrait-frame { position: relative; display: block; width: fit-content; }
 .stamp {
   position: absolute;
-  right: calc(var(--pad) * -0.4);
-  bottom: calc(var(--pad) * 0.2);
-  width: clamp(3.6rem, 2.6rem + 3vw, 5.25rem);
+  right: -30%;
+  bottom: -16%;
+  width: 68%;
   height: auto;
   color: var(--signal);
   opacity: 0.9;
@@ -1028,4 +1004,32 @@ h2[id],
   .chips { display: none; }
   details::details-content { content-visibility: visible; display: block; }
   details > summary::after { display: none; }
+}
+
+/* Responsive refinements */
+
+/* The intro spans the sheet: heading on top, then text and Fig. 1 side by side */
+@media (min-width: 60rem) {
+  main > section.intro { grid-template-columns: minmax(0, 1fr); }
+  main > section.intro > h2,
+  main > section.intro > .intro-body { grid-column: 1; }
+  .intro-body { grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); gap: 4rem; }
+}
+
+/* Fig. 2 landscape only where its labels stay readable */
+.wiring-wide { display: none; }
+.wiring-narrow { display: block; }
+@media (min-width: 60rem) {
+  .wiring-wide { display: block; }
+  .wiring-narrow { display: none; }
+}
+
+h2[id],
+.part-body[id] { scroll-margin-top: 5.5rem; }
+
+/* Hint that the index strip scrolls sideways on narrow screens */
+@media (max-width: 52rem) {
+  .index ol {
+    mask-image: linear-gradient(to right, rgb(0 0 0) 82%, transparent);
+  }
 }
