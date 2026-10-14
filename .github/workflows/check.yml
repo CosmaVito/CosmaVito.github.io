@@ -20,5 +20,12 @@ jobs:
           node-version: 22
       - name: Validate HTML
         run: npx --yes html-validate@11.16.1 index.html
-      - name: Accessibility (axe)
-        run: npx --yes @axe-core/cli@4.13.0 "file://$PWD/index.html" --exit --chromedriver-path "$CHROMEWEBDRIVER/chromedriver"
+      - name: Accessibility (axe), light and dark themes
+        env:
+          CHROMEDRIVER_SKIP_DOWNLOAD: "true"
+        run: |
+          for scheme in 1 0; do
+            npx --yes @axe-core/cli@4.13.0 "file://$PWD/index.html" --exit \
+              --chromedriver-path "$CHROMEWEBDRIVER/chromedriver" \
+              --chrome-options="blink-settings=preferredColorScheme=$scheme"
+          done

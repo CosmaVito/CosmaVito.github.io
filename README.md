@@ -2,7 +2,7 @@
 
 Source of my personal page, published with GitHub Pages at https://cosmavito.github.io.
 
-One static page written by hand in HTML and CSS. There is no JavaScript, no cookie and no tracking. Fonts are self-hosted: Archivo and B612 Mono, both under the SIL Open Font License (see `fonts/`). The only external request is my GitHub avatar.
+One static page written by hand in HTML and CSS. It uses no JavaScript. There are no cookies and no tracking. Fonts are self-hosted: Archivo and B612 Mono, both under the SIL Open Font License (see `fonts/`). The only external request is my GitHub avatar.
 
 ## Checks
 

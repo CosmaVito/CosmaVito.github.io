@@ -46,8 +46,8 @@
     --frame: oklch(70% 0.012 85);
     --signal: oklch(72% 0.16 48);
     --signal-ink: oklch(79% 0.135 52);
-    --plate-l: oklch(28% 0.016 255);
-    --plate-r: oklch(25% 0.016 255);
+    --plate-l: oklch(16.5% 0.014 255);
+    --plate-r: oklch(14.5% 0.014 255);
   }
 }
 
@@ -532,3 +532,13 @@ p + p { margin-top: 0.9rem; }
 }
 .colophon p + p { margin-top: 0; }
 .sheetno { font-family: var(--mono); font-size: 0.75rem; }
+
+/* Narrow screens: keep the name inside the sheet */
+
+@media (max-width: 26rem) {
+  h1 {
+    font-size: clamp(1.7rem, 0.9rem + 5.5vw, 2rem);
+    font-stretch: 100%;
+    overflow-wrap: break-word;
+  }
+}
