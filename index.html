@@ -146,47 +146,79 @@
             <tr>
               <td><span class="callout">1</span></td>
               <th scope="row">Interface</th>
-              <td>Angular with signals, Blazor WebAssembly, React, TypeScript</td>
+              <td>Angular 2 to 20 with signals, Blazor WebAssembly, React 18, TypeScript, HTML and SCSS. Component libraries: PrimeNG, PrimeReact, Material, Tailwind.</td>
             </tr>
             <tr>
               <td><span class="callout">2</span></td>
               <th scope="row">Services</th>
-              <td>.NET 8 to 10, ASP.NET Core Minimal APIs, .NET Aspire, Clean Architecture, CQRS</td>
+              <td>C# on .NET 8 to 10: ASP.NET Core Minimal APIs, FastEndpoints, .NET Aspire, SignalR. Clean Architecture, CQRS with Mediator, microservices, dependency injection, Entity Framework Core with Unit of Work and Repository.</td>
             </tr>
             <tr>
               <td><span class="callout">3</span></td>
               <th scope="row">Data and messaging</th>
-              <td>PostgreSQL, SQL Server, MongoDB, Redis, Elasticsearch, RabbitMQ, Keycloak and OpenID Connect</td>
+              <td>PostgreSQL, SQL Server, MongoDB, Redis, Elasticsearch, RabbitMQ, MinIO. Identity with Keycloak, OpenID Connect and OAuth 2.0.</td>
             </tr>
             <tr>
               <td><span class="callout">4</span></td>
               <th scope="row">Delivery pipeline</th>
-              <td>CI/CD gates with SAST, SCA, Trivy and Gitleaks, SBOM and CVE tracking, release documentation for EU Cyber Resilience Act audits, Docker, Azure</td>
+              <td>CI/CD with SAST, SCA, Trivy and Gitleaks, SBOM and CVE tracking, release documentation for EU Cyber Resilience Act audits. Docker, Azure, GitFlow, pull requests with code review.</td>
             </tr>
             <tr>
               <td><span class="callout">5</span></td>
-              <th scope="row">Performance <span class="ns">not shown</span></th>
-              <td>JavaScript and TypeScript memory leaks, Entity Framework query tuning, ThreadPool starvation</td>
+              <th scope="row">Quality <span class="ns">not shown</span></th>
+              <td>SOLID and shared team conventions enforced with ESLint, Prettier and EditorConfig. Tests with xUnit, NUnit and Testcontainers on the backend, Karma and Jasmine on the frontend.</td>
             </tr>
             <tr>
               <td><span class="callout">6</span></td>
+              <th scope="row">Performance <span class="ns">not shown</span></th>
+              <td>JavaScript and TypeScript memory leaks, Entity Framework Core query tuning, ThreadPool starvation, bottlenecks in cloud-native environments.</td>
+            </tr>
+            <tr>
+              <td><span class="callout">7</span></td>
               <th scope="row">Privacy <span class="ns">not shown</span></th>
-              <td>GDPR by design: data minimisation and pseudonymisation</td>
+              <td>GDPR by design: data minimisation and pseudonymisation. Assessment of AI services against the EU AI Act.</td>
             </tr>
           </tbody>
         </table>
       </section>
 
       <section aria-labelledby="s3">
-        <h2 id="s3"><span class="secno">3</span> Service record</h2>
-        <ul class="log">
-          <li>More than 10 years on enterprise web applications, since 2016.</li>
-          <li>I lead a team of six developers across three client platforms, with a production release every two-week sprint.</li>
-          <li>I have run more than 10 technical interviews and onboarded five developers.</li>
-          <li>I moved releases from manual steps to automated pipelines, from hours to minutes.</li>
-          <li>I halved response times on the most used features of a platform with thousands of users.</li>
-          <li>I defined the CI security controls, with a gate that blocks any build that fails them.</li>
-        </ul>
+        <h2 id="s3"><span class="secno">3</span> Operating procedure</h2>
+        <div class="procedure-wrap">
+          <p class="note">How I run a delivery, from the first request to the next hire.</p>
+          <ol class="procedure">
+            <li>
+              <h3>Assess</h3>
+              <p>I work with the client from presales on: feasibility analysis of incoming requests, estimates and the technical annex that goes into the go/no-go decision.</p>
+              <p class="output"><span>Output</span> An estimate and a technical annex the client can decide on.</p>
+            </li>
+            <li>
+              <h3>Design</h3>
+              <p>Mockups first, defined together with the UX/UI team. Then the architecture, with the team that will build it.</p>
+              <p class="output"><span>Output</span> Agreed screens and an architecture with written decisions.</p>
+            </li>
+            <li>
+              <h3>Plan</h3>
+              <p>Two-week sprints, run as Scrum Master: priorities, work assignment, functional and technical analysis.</p>
+              <p class="output"><span>Output</span> A production release at the end of every sprint.</p>
+            </li>
+            <li>
+              <h3>Build</h3>
+              <p>Code review on every pull request, shared conventions, tests in the validation pipeline. I still write code every day.</p>
+              <p class="output"><span>Output</span> Six developers on three client platforms, working to one standard.</p>
+            </li>
+            <li>
+              <h3>Release</h3>
+              <p>Every build goes through static analysis, dependency and secret scanning and an SBOM. A build that fails them stops at the gate. I own the release report the client signs, with scan results and vulnerability status attached.</p>
+              <p class="output"><span>Output</span> Releases in minutes instead of hours, with documents ready for audits.</p>
+            </li>
+            <li>
+              <h3>Grow the team</h3>
+              <p>Technical interviews for new hires, then onboarding and follow-up while they settle in.</p>
+              <p class="output"><span>Output</span> More than 10 interviews and 5 developers onboarded since 2024.</p>
+            </li>
+          </ol>
+        </div>
       </section>
 
       <section aria-labelledby="s4">
@@ -637,22 +669,261 @@
       </section>
 
       <section aria-labelledby="s5">
-        <h2 id="s5"><span class="secno">5</span> References and training</h2>
-        <dl class="facts">
-          <div><dt>References</dt><dd>Recommendations from colleagues are on my <a href="https://www.linkedin.com/in/cosma-vito-iaffaldano-955350ba/">LinkedIn profile</a>.</dd></div>
-          <div><dt>Education</dt><dd>BSc in Computer Science, University of Bari, 2015</dd></div>
-          <div><dt>Training</dt><dd>Essentials with Azure Fundamentals (Microsoft), 2026</dd></div>
-          <div><dt>Languages</dt><dd>Italian (native), English (B2)</dd></div>
-        </dl>
+        <h2 id="s5"><span class="secno">5</span> Service life</h2>
+        <div class="servicelife-wrap">
+          <figure class="fig fig-servicelife">
+<!-- servicelife:start -->
+<svg class="servicelife servicelife-wide" viewBox="0 0 760 502" role="img" aria-labelledby="fig3w-title" aria-describedby="fig3w-desc">
+<title id="fig3w-title">Service life of the technologies I use, 2016 to 2026</title>
+<desc id="fig3w-desc">Bars from 2016 to today. Angular, 2 to 20: 2016 to today. TypeScript: 2016 to today. ASP.NET MVC: 2016 to 2018. .NET Framework: 2018 to 2024. .NET 8 to 10: 2024 to today. Elasticsearch: 2018 to today. Automated tests: 2018 to today. Docker: 2018 to today. Azure: 2018 to today. Security gates in CI: 2024 to today. Keycloak and OIDC: 2024 to today. RabbitMQ: 2024 to today. .NET Aspire: 2024 to today. React: 2024 to today. Blazor WebAssembly: 2024 to today. Astro and Cloudflare: 2026 to today. Revision A in 2016, B in 2018, C in 2024.</desc>
+<line class="s-grid" x1="190" y1="76" x2="190" y2="484"/>
+<text class="s-year" x="190" y="70">2016</text>
+<line class="s-grid" x1="242.2" y1="76" x2="242.2" y2="484"/>
+<text class="s-year" x="242.2" y="70">2017</text>
+<line class="s-grid" x1="294.4" y1="76" x2="294.4" y2="484"/>
+<text class="s-year" x="294.4" y="70">2018</text>
+<line class="s-grid" x1="346.6" y1="76" x2="346.6" y2="484"/>
+<text class="s-year" x="346.6" y="70">2019</text>
+<line class="s-grid" x1="398.8" y1="76" x2="398.8" y2="484"/>
+<text class="s-year" x="398.8" y="70">2020</text>
+<line class="s-grid" x1="451" y1="76" x2="451" y2="484"/>
+<text class="s-year" x="451" y="70">2021</text>
+<line class="s-grid" x1="503.2" y1="76" x2="503.2" y2="484"/>
+<text class="s-year" x="503.2" y="70">2022</text>
+<line class="s-grid" x1="555.4" y1="76" x2="555.4" y2="484"/>
+<text class="s-year" x="555.4" y="70">2023</text>
+<line class="s-grid" x1="607.6" y1="76" x2="607.6" y2="484"/>
+<text class="s-year" x="607.6" y="70">2024</text>
+<line class="s-grid" x1="659.8" y1="76" x2="659.8" y2="484"/>
+<text class="s-year" x="659.8" y="70">2025</text>
+<line class="s-grid" x1="712" y1="76" x2="712" y2="484"/>
+<text class="s-year" x="712" y="70">2026</text>
+<line class="s-rev" x1="200.4" y1="84" x2="200.4" y2="484"/>
+<path class="s-tri" d="M200.4,26 L209.4,41 L191.4,41 Z"/>
+<text class="s-trit" x="200.4" y="38.5">A</text>
+<line class="s-rev" x1="304.8" y1="84" x2="304.8" y2="484"/>
+<path class="s-tri" d="M304.8,26 L313.8,41 L295.8,41 Z"/>
+<text class="s-trit" x="304.8" y="38.5">B</text>
+<line class="s-rev" x1="607.6" y1="84" x2="607.6" y2="484"/>
+<path class="s-tri" d="M607.6,26 L616.6,41 L598.6,41 Z"/>
+<text class="s-trit" x="607.6" y="38.5">C</text>
+<text class="s-label" x="176" y="94" text-anchor="end">Angular, 2 to 20</text>
+<line class="s-bar" x1="200.4" y1="90" x2="746" y2="90"/>
+<circle class="s-start" cx="200.4" cy="90" r="3.4"/>
+<path class="s-head" d="M752,90 L744,85.5 L744,94.5 Z"/>
+<text class="s-label" x="176" y="119" text-anchor="end">TypeScript</text>
+<line class="s-bar" x1="200.4" y1="115" x2="746" y2="115"/>
+<circle class="s-start" cx="200.4" cy="115" r="3.4"/>
+<path class="s-head" d="M752,115 L744,110.5 L744,119.5 Z"/>
+<text class="s-label" x="176" y="144" text-anchor="end">ASP.NET MVC</text>
+<line class="s-bar" x1="200.4" y1="140" x2="304.8" y2="140"/>
+<circle class="s-start" cx="200.4" cy="140" r="3.4"/>
+<line class="s-end" x1="304.8" y1="135" x2="304.8" y2="145"/>
+<text class="s-label" x="176" y="169" text-anchor="end">.NET Framework</text>
+<line class="s-bar" x1="304.8" y1="165" x2="607.6" y2="165"/>
+<circle class="s-start" cx="304.8" cy="165" r="3.4"/>
+<line class="s-end" x1="607.6" y1="160" x2="607.6" y2="170"/>
+<text class="s-label" x="176" y="194" text-anchor="end">.NET 8 to 10</text>
+<line class="s-bar" x1="607.6" y1="190" x2="746" y2="190"/>
+<circle class="s-start" cx="607.6" cy="190" r="3.4"/>
+<path class="s-head" d="M752,190 L744,185.5 L744,194.5 Z"/>
+<text class="s-label" x="176" y="219" text-anchor="end">Elasticsearch</text>
+<line class="s-bar" x1="304.8" y1="215" x2="746" y2="215"/>
+<circle class="s-start" cx="304.8" cy="215" r="3.4"/>
+<path class="s-head" d="M752,215 L744,210.5 L744,219.5 Z"/>
+<text class="s-label" x="176" y="244" text-anchor="end">Automated tests</text>
+<line class="s-bar" x1="304.8" y1="240" x2="746" y2="240"/>
+<circle class="s-start" cx="304.8" cy="240" r="3.4"/>
+<path class="s-head" d="M752,240 L744,235.5 L744,244.5 Z"/>
+<text class="s-label" x="176" y="269" text-anchor="end">Docker</text>
+<line class="s-bar" x1="304.8" y1="265" x2="746" y2="265"/>
+<circle class="s-start" cx="304.8" cy="265" r="3.4"/>
+<path class="s-head" d="M752,265 L744,260.5 L744,269.5 Z"/>
+<text class="s-label" x="176" y="294" text-anchor="end">Azure</text>
+<line class="s-bar" x1="304.8" y1="290" x2="746" y2="290"/>
+<circle class="s-start" cx="304.8" cy="290" r="3.4"/>
+<path class="s-head" d="M752,290 L744,285.5 L744,294.5 Z"/>
+<text class="s-label" x="176" y="319" text-anchor="end">Security gates in CI</text>
+<line class="s-bar sec" x1="607.6" y1="315" x2="746" y2="315"/>
+<circle class="s-start sec" cx="607.6" cy="315" r="3.4"/>
+<path class="s-head sec" d="M752,315 L744,310.5 L744,319.5 Z"/>
+<text class="s-label" x="176" y="344" text-anchor="end">Keycloak and OIDC</text>
+<line class="s-bar" x1="607.6" y1="340" x2="746" y2="340"/>
+<circle class="s-start" cx="607.6" cy="340" r="3.4"/>
+<path class="s-head" d="M752,340 L744,335.5 L744,344.5 Z"/>
+<text class="s-label" x="176" y="369" text-anchor="end">RabbitMQ</text>
+<line class="s-bar" x1="607.6" y1="365" x2="746" y2="365"/>
+<circle class="s-start" cx="607.6" cy="365" r="3.4"/>
+<path class="s-head" d="M752,365 L744,360.5 L744,369.5 Z"/>
+<text class="s-label" x="176" y="394" text-anchor="end">.NET Aspire</text>
+<line class="s-bar" x1="607.6" y1="390" x2="746" y2="390"/>
+<circle class="s-start" cx="607.6" cy="390" r="3.4"/>
+<path class="s-head" d="M752,390 L744,385.5 L744,394.5 Z"/>
+<text class="s-label" x="176" y="419" text-anchor="end">React</text>
+<line class="s-bar" x1="607.6" y1="415" x2="746" y2="415"/>
+<circle class="s-start" cx="607.6" cy="415" r="3.4"/>
+<path class="s-head" d="M752,415 L744,410.5 L744,419.5 Z"/>
+<text class="s-label" x="176" y="444" text-anchor="end">Blazor WebAssembly</text>
+<line class="s-bar" x1="607.6" y1="440" x2="746" y2="440"/>
+<circle class="s-start" cx="607.6" cy="440" r="3.4"/>
+<path class="s-head" d="M752,440 L744,435.5 L744,444.5 Z"/>
+<text class="s-label" x="176" y="469" text-anchor="end">Astro and Cloudflare</text>
+<line class="s-bar" x1="712" y1="465" x2="746" y2="465"/>
+<circle class="s-start" cx="712" cy="465" r="3.4"/>
+<path class="s-head" d="M752,465 L744,460.5 L744,469.5 Z"/>
+</svg>
+<svg class="servicelife servicelife-narrow" viewBox="0 0 340 678" role="img" aria-labelledby="fig3n-title" aria-describedby="fig3n-desc">
+<title id="fig3n-title">Service life of the technologies I use, 2016 to 2026</title>
+<desc id="fig3n-desc">Bars from 2016 to today. Angular, 2 to 20: 2016 to today. TypeScript: 2016 to today. ASP.NET MVC: 2016 to 2018. .NET Framework: 2018 to 2024. .NET 8 to 10: 2024 to today. Elasticsearch: 2018 to today. Automated tests: 2018 to today. Docker: 2018 to today. Azure: 2018 to today. Security gates in CI: 2024 to today. Keycloak and OIDC: 2024 to today. RabbitMQ: 2024 to today. .NET Aspire: 2024 to today. React: 2024 to today. Blazor WebAssembly: 2024 to today. Astro and Cloudflare: 2026 to today. Revision A in 2016, B in 2018, C in 2024.</desc>
+<line class="s-grid" x1="14" y1="76" x2="14" y2="660"/>
+<text class="s-year" x="14" y="70">2016</text>
+<line class="s-grid" x1="42.6" y1="76" x2="42.6" y2="660"/>
+<line class="s-grid" x1="71.2" y1="76" x2="71.2" y2="660"/>
+<text class="s-year" x="71.2" y="70">2018</text>
+<line class="s-grid" x1="99.8" y1="76" x2="99.8" y2="660"/>
+<line class="s-grid" x1="128.4" y1="76" x2="128.4" y2="660"/>
+<text class="s-year" x="128.4" y="70">2020</text>
+<line class="s-grid" x1="157" y1="76" x2="157" y2="660"/>
+<line class="s-grid" x1="185.6" y1="76" x2="185.6" y2="660"/>
+<text class="s-year" x="185.6" y="70">2022</text>
+<line class="s-grid" x1="214.2" y1="76" x2="214.2" y2="660"/>
+<line class="s-grid" x1="242.8" y1="76" x2="242.8" y2="660"/>
+<text class="s-year" x="242.8" y="70">2024</text>
+<line class="s-grid" x1="271.4" y1="76" x2="271.4" y2="660"/>
+<line class="s-grid" x1="300" y1="76" x2="300" y2="660"/>
+<text class="s-year" x="300" y="70">2026</text>
+<line class="s-rev" x1="19.7" y1="84" x2="19.7" y2="660"/>
+<path class="s-tri" d="M19.7,26 L28.7,41 L10.7,41 Z"/>
+<text class="s-trit" x="19.7" y="38.5">A</text>
+<line class="s-rev" x1="76.9" y1="84" x2="76.9" y2="660"/>
+<path class="s-tri" d="M76.9,26 L85.9,41 L67.9,41 Z"/>
+<text class="s-trit" x="76.9" y="38.5">B</text>
+<line class="s-rev" x1="242.8" y1="84" x2="242.8" y2="660"/>
+<path class="s-tri" d="M242.8,26 L251.8,41 L233.8,41 Z"/>
+<text class="s-trit" x="242.8" y="38.5">C</text>
+<text class="s-label" x="14" y="93">Angular, 2 to 20</text>
+<line class="s-bar" x1="19.7" y1="103" x2="316.9" y2="103"/>
+<circle class="s-start" cx="19.7" cy="103" r="3.4"/>
+<path class="s-head" d="M322.9,103 L314.9,98.5 L314.9,107.5 Z"/>
+<text class="s-label" x="14" y="129">TypeScript</text>
+<line class="s-bar" x1="19.7" y1="139" x2="316.9" y2="139"/>
+<circle class="s-start" cx="19.7" cy="139" r="3.4"/>
+<path class="s-head" d="M322.9,139 L314.9,134.5 L314.9,143.5 Z"/>
+<text class="s-label" x="14" y="165">ASP.NET MVC</text>
+<line class="s-bar" x1="19.7" y1="175" x2="76.9" y2="175"/>
+<circle class="s-start" cx="19.7" cy="175" r="3.4"/>
+<line class="s-end" x1="76.9" y1="170" x2="76.9" y2="180"/>
+<text class="s-label" x="14" y="201">.NET Framework</text>
+<line class="s-bar" x1="76.9" y1="211" x2="242.8" y2="211"/>
+<circle class="s-start" cx="76.9" cy="211" r="3.4"/>
+<line class="s-end" x1="242.8" y1="206" x2="242.8" y2="216"/>
+<text class="s-label" x="14" y="237">.NET 8 to 10</text>
+<line class="s-bar" x1="242.8" y1="247" x2="316.9" y2="247"/>
+<circle class="s-start" cx="242.8" cy="247" r="3.4"/>
+<path class="s-head" d="M322.9,247 L314.9,242.5 L314.9,251.5 Z"/>
+<text class="s-label" x="14" y="273">Elasticsearch</text>
+<line class="s-bar" x1="76.9" y1="283" x2="316.9" y2="283"/>
+<circle class="s-start" cx="76.9" cy="283" r="3.4"/>
+<path class="s-head" d="M322.9,283 L314.9,278.5 L314.9,287.5 Z"/>
+<text class="s-label" x="14" y="309">Automated tests</text>
+<line class="s-bar" x1="76.9" y1="319" x2="316.9" y2="319"/>
+<circle class="s-start" cx="76.9" cy="319" r="3.4"/>
+<path class="s-head" d="M322.9,319 L314.9,314.5 L314.9,323.5 Z"/>
+<text class="s-label" x="14" y="345">Docker</text>
+<line class="s-bar" x1="76.9" y1="355" x2="316.9" y2="355"/>
+<circle class="s-start" cx="76.9" cy="355" r="3.4"/>
+<path class="s-head" d="M322.9,355 L314.9,350.5 L314.9,359.5 Z"/>
+<text class="s-label" x="14" y="381">Azure</text>
+<line class="s-bar" x1="76.9" y1="391" x2="316.9" y2="391"/>
+<circle class="s-start" cx="76.9" cy="391" r="3.4"/>
+<path class="s-head" d="M322.9,391 L314.9,386.5 L314.9,395.5 Z"/>
+<text class="s-label" x="14" y="417">Security gates in CI</text>
+<line class="s-bar sec" x1="242.8" y1="427" x2="316.9" y2="427"/>
+<circle class="s-start sec" cx="242.8" cy="427" r="3.4"/>
+<path class="s-head sec" d="M322.9,427 L314.9,422.5 L314.9,431.5 Z"/>
+<text class="s-label" x="14" y="453">Keycloak and OIDC</text>
+<line class="s-bar" x1="242.8" y1="463" x2="316.9" y2="463"/>
+<circle class="s-start" cx="242.8" cy="463" r="3.4"/>
+<path class="s-head" d="M322.9,463 L314.9,458.5 L314.9,467.5 Z"/>
+<text class="s-label" x="14" y="489">RabbitMQ</text>
+<line class="s-bar" x1="242.8" y1="499" x2="316.9" y2="499"/>
+<circle class="s-start" cx="242.8" cy="499" r="3.4"/>
+<path class="s-head" d="M322.9,499 L314.9,494.5 L314.9,503.5 Z"/>
+<text class="s-label" x="14" y="525">.NET Aspire</text>
+<line class="s-bar" x1="242.8" y1="535" x2="316.9" y2="535"/>
+<circle class="s-start" cx="242.8" cy="535" r="3.4"/>
+<path class="s-head" d="M322.9,535 L314.9,530.5 L314.9,539.5 Z"/>
+<text class="s-label" x="14" y="561">React</text>
+<line class="s-bar" x1="242.8" y1="571" x2="316.9" y2="571"/>
+<circle class="s-start" cx="242.8" cy="571" r="3.4"/>
+<path class="s-head" d="M322.9,571 L314.9,566.5 L314.9,575.5 Z"/>
+<text class="s-label" x="14" y="597">Blazor WebAssembly</text>
+<line class="s-bar" x1="242.8" y1="607" x2="316.9" y2="607"/>
+<circle class="s-start" cx="242.8" cy="607" r="3.4"/>
+<path class="s-head" d="M322.9,607 L314.9,602.5 L314.9,611.5 Z"/>
+<text class="s-label" x="14" y="633">Astro and Cloudflare</text>
+<line class="s-bar" x1="300" y1="643" x2="316.9" y2="643"/>
+<circle class="s-start" cx="300" cy="643" r="3.4"/>
+<path class="s-head" d="M322.9,643 L314.9,638.5 L314.9,647.5 Z"/>
+</svg>
+<!-- servicelife:end -->
+            <figcaption><span class="fig-no">Fig. 3</span> Service life of the technologies I use, from my first role in 2016 to today. The triangles mark the revisions below.</figcaption>
+          </figure>
+          <table class="revs">
+            <caption class="visually-hidden">Revision history</caption>
+            <thead>
+              <tr><th scope="col">Rev.</th><th scope="col">Year</th><th scope="col">Description</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="revmark">A</span></td>
+                <td>2016</td>
+                <td>Junior full-stack developer. ASP.NET MVC and Angular for clients in education, engineering and financial services, in the years of the move from WebForms to MVC and from jQuery to Angular.</td>
+              </tr>
+              <tr>
+                <td><span class="revmark">B</span></td>
+                <td>2018</td>
+                <td>Full-stack developer on a management product with thousands of users. Technical reference for its core features and full-text search; brought in unit tests, Docker and deployment on Azure; halved response times on the most used features.</td>
+              </tr>
+              <tr>
+                <td><span class="revmark">C</span></td>
+                <td>2024</td>
+                <td>Tech lead and delivery. Architecture, estimates and code review for a team of six on three client platforms, with security gates in every pipeline.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section aria-labelledby="s6">
-        <h2 id="s6"><span class="secno">6</span> Off the clock</h2>
+        <h2 id="s6"><span class="secno">6</span> Maintenance and training</h2>
+        <div class="maint-wrap">
+          <table class="maint">
+            <caption class="visually-hidden">Maintenance schedule</caption>
+            <thead>
+              <tr><th scope="col">Interval</th><th scope="col">Task</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Daily</th><td>Read engineering articles, and follow .NET in Pillole, Fabio Biondi and Milan Jovanović.</td></tr>
+              <tr><th scope="row">Each major release</th><td>Try the new versions of .NET and Angular on my own projects before they reach production code.</td></tr>
+              <tr><th scope="row">2026</th><td>Essentials with Azure Fundamentals (Microsoft).</td></tr>
+            </tbody>
+          </table>
+          <dl class="facts">
+            <div><dt>Education</dt><dd>BSc in Computer Science, University of Bari, 2015</dd></div>
+            <div><dt>Languages</dt><dd>Italian (native), English (B2)</dd></div>
+            <div><dt>References</dt><dd>Recommendations from colleagues are on my <a href="https://www.linkedin.com/in/cosma-vito-iaffaldano-955350ba/">LinkedIn profile</a>.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section aria-labelledby="s7">
+        <h2 id="s7"><span class="secno">7</span> Off the clock</h2>
         <p class="prose">I like taking things apart to see how they work, and explaining what I find on Instagram as <a href="https://www.instagram.com/smonto.tutto/">@smonto.tutto</a>. The drawing at the top of this page comes from the same habit. I also train CrossFit and play the drums.</p>
       </section>
 
-      <section class="contact" aria-labelledby="s7">
-        <h2 id="s7"><span class="secno">7</span> Contact</h2>
+      <section class="contact" aria-labelledby="s8">
+        <h2 id="s8"><span class="secno">8</span> Contact</h2>
         <div>
           <p class="contact-mail"><a href="mailto:iaffaldanocosma@gmail.com">iaffaldanocosma@<wbr>gmail.com</a></p>
           <ul class="links">

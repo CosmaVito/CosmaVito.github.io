@@ -401,32 +401,64 @@ p + p { margin-top: 0.9rem; }
   .bom tbody th { width: auto; }
 }
 
-/* 3. Service record */
+/* 3. Operating procedure */
 
-.log {
+.note {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+.procedure {
   margin: 0;
   padding: 0;
   list-style: none;
-  max-width: 64ch;
+  counter-reset: step;
+  display: grid;
+  gap: 0;
 }
-.log li {
-  position: relative;
-  padding: 0.7rem 0 0.7rem 2.25rem;
-  border-bottom: 1px solid var(--rule);
+.procedure li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  align-content: start;
+  column-gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
 }
-.log li:first-child { padding-top: 0; }
-.log li::before {
-  content: "";
-  position: absolute;
-  left: 0.35rem;
-  top: 0.95rem;
-  width: 0.45rem;
-  height: 0.85rem;
-  border: solid var(--signal);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+.procedure li:last-child { border-bottom: 1px solid var(--rule); }
+.procedure li::before {
+  content: "Step " counter(step);
+  grid-row: span 3;
+  padding-top: 0.25rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--signal-ink);
 }
-.log li:first-child::before { top: 0.25rem; }
+.procedure li > * { grid-column: 2; }
+.procedure h3 + p { margin-top: 0.35rem; max-width: 62ch; }
+.output {
+  margin-top: 0.6rem;
+  font-size: 0.925rem;
+  font-weight: 600;
+}
+.output span {
+  margin-right: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+@media (min-width: 72rem) {
+  .procedure { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
+  .procedure li:nth-last-child(2) { border-bottom: 1px solid var(--rule); }
+}
+@media (max-width: 30rem) {
+  .procedure li { grid-template-columns: minmax(0, 1fr); }
+  .procedure li::before { grid-row: auto; padding: 0 0 0.2rem; }
+  .procedure li > * { grid-column: 1; }
+}
 
 /* 4. Wiring diagram */
 
@@ -493,7 +525,112 @@ p + p { margin-top: 0.9rem; }
 .wiring-narrow .w-sub { font-size: 10.5px; }
 .wiring-narrow .w-blabel { font-size: 10.5px; }
 
-/* 5. References and training */
+
+/* 5. Service life */
+
+.servicelife-wrap { display: grid; gap: 2rem; }
+.servicelife { display: block; width: 100%; height: auto; overflow: visible; }
+.servicelife-wide { display: none; }
+@media (min-width: 48rem) {
+  .servicelife-wide { display: block; }
+  .servicelife-narrow { display: none; }
+}
+.servicelife-narrow { max-width: 26rem; margin-inline: auto; }
+.fig-servicelife figcaption { text-align: left; max-width: 62ch; }
+
+.servicelife .s-grid { stroke: var(--rule); stroke-width: 1; }
+.servicelife .s-year { fill: var(--ink-2); font-family: var(--mono); font-size: 10px; text-anchor: middle; }
+.servicelife .s-rev { stroke: var(--signal); stroke-width: 1; stroke-dasharray: 4 3; opacity: 0.8; }
+.servicelife .s-tri { fill: var(--paper); stroke: var(--signal); stroke-width: 1.4; stroke-linejoin: round; }
+.servicelife .s-trit { fill: var(--signal-ink); font-family: var(--mono); font-size: 9.5px; text-anchor: middle; }
+.servicelife .s-label { fill: var(--ink); font-family: var(--sans); font-size: 12px; font-weight: 600; paint-order: stroke; stroke: var(--paper); stroke-width: 5px; stroke-linejoin: round; }
+.servicelife-narrow .s-label { font-size: 12.5px; }
+.servicelife .s-bar { stroke: var(--frame); stroke-width: 2.4; stroke-linecap: round; }
+.servicelife .s-start { fill: var(--frame); }
+.servicelife .s-end { stroke: var(--frame); stroke-width: 2; }
+.servicelife .s-head { fill: var(--frame); }
+.servicelife .s-bar.sec { stroke: var(--signal); }
+.servicelife .s-start.sec,
+.servicelife .s-head.sec { fill: var(--signal); }
+
+.revs,
+.maint {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--frame);
+  font-size: 0.95rem;
+}
+.revs th,
+.revs td,
+.maint th,
+.maint td {
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.revs thead th,
+.maint thead th {
+  background: var(--paper-2);
+  border-bottom-color: var(--frame);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.revs td:nth-child(1) { width: 3.75rem; }
+.revs td:nth-child(2) { width: 4.5rem; font-family: var(--mono); font-size: 0.85rem; }
+.revmark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.6rem;
+  padding-top: 0.25rem;
+  background: var(--signal);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--paper);
+}
+@media (max-width: 40rem) {
+  .revs thead,
+  .maint thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .revs,
+  .revs tbody,
+  .maint,
+  .maint tbody { display: block; border: 0; }
+  .revs tr {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.2rem 0.75rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .revs tr:last-child,
+  .maint tr:last-child { border-bottom: 1px solid var(--rule); }
+  .revs td { display: block; padding: 0; border: 0; width: auto; }
+  .revs td:nth-child(1) { grid-row: span 2; width: auto; }
+  .revs td:nth-child(2) { width: auto; }
+  .maint tr { display: block; padding: 0.8rem 0; border-top: 1px solid var(--rule); }
+  .maint th,
+  .maint td { display: block; padding: 0; border: 0; }
+  .maint th { font-weight: 650; margin-bottom: 0.15rem; }
+}
+
+/* 6. Maintenance and training */
+
+.maint-wrap { display: grid; gap: 2rem; max-width: 64rem; }
+.maint tbody th { width: 11rem; font-weight: 650; }
+
 
 .facts {
   margin: 0;
@@ -514,11 +651,11 @@ p + p { margin-top: 0.9rem; }
   .facts > div { grid-template-columns: 9rem minmax(0, 1fr); }
 }
 
-/* 6. Off the clock */
+/* 7. Off the clock */
 
 .prose { max-width: 62ch; }
 
-/* 7. Contact */
+/* 8. Contact */
 
 .contact-mail {
   font-size: clamp(1.3rem, 1rem + 1.4vw, 2rem);
