@@ -190,37 +190,450 @@
       </section>
 
       <section aria-labelledby="s4">
-        <h2 id="s4"><span class="secno">4</span> Selected work</h2>
-        <div class="cases-wrap">
-          <p class="note">Client and employer names are left out on purpose.</p>
-          <ol class="cases">
-            <li>
-              <h3>E-commerce for a renewable energy operator</h3>
-              <p>Products, orders and users on a modular .NET Aspire architecture, orchestrated and observable end to end.</p>
-              <p class="stack">.NET 10 · Blazor WebAssembly · PostgreSQL · RabbitMQ · MinIO · Keycloak</p>
-            </li>
-            <li>
-              <h3>Healthcare management system</h3>
-              <p>In production with three operators. Diagnostic support runs on self-hosted models, with pseudonymised patient data.</p>
-              <p class="stack">Angular 20 with signals · .NET 10 · PrimeNG · Keycloak</p>
-            </li>
-            <li>
-              <h3>Real-time monitoring for the defence sector</h3>
-              <p>Large data volumes under tight latency, deployed in an isolated environment.</p>
-              <p class="stack">React 18 · .NET 9 · FastEndpoints · SignalR · Elasticsearch</p>
-            </li>
-            <li>
-              <h3>Candidate and opportunity matching</h3>
-              <p>In production. Microservices with Clean Architecture and CQRS.</p>
-              <p class="stack">.NET 8 Minimal APIs · Angular 15 · MongoDB · PostgreSQL · RabbitMQ · OpenID Connect</p>
-            </li>
-            <li>
-              <h3>Practice management for notary offices</h3>
-              <p>Thousands of users. Technical reference for case management and full-text search, including filings to public bodies. Response times halved.</p>
-              <p class="stack">Angular · .NET Framework · Elasticsearch · Azure</p>
-            </li>
-          </ol>
-        </div>
+        <h2 id="s4"><span class="secno">4</span> Wiring diagram</h2>
+        <figure class="fig fig-wiring">
+<!-- wiring:start -->
+<svg class="wiring wiring-wide" viewBox="0 0 780 572" role="img" aria-labelledby="fig2w-title" aria-describedby="fig2w-desc">
+<title id="fig2w-title">Wiring diagram of the stack I work with</title>
+<desc id="fig2w-desc">Interface: TypeScript, Angular, React and Blazor WebAssembly, connected over HTTPS to services orchestrated with .NET Aspire: ASP.NET Core Minimal APIs, FastEndpoints, SignalR and Entity Framework Core, with Keycloak for OpenID Connect. The services use PostgreSQL, SQL Server, MongoDB, Redis, Elasticsearch, RabbitMQ and MinIO. Delivery pipeline: Git, tests, static analysis, dependency scanning with Trivy, secret scanning with Gitleaks, SBOM, a release gate, Docker and Azure. Websites for small businesses: Astro on Cloudflare.</desc>
+<rect class="w-frame" x="10" y="40" width="170" height="250"/>
+<circle class="w-ring" cx="19" cy="29" r="8"/>
+<text class="w-num" x="19" y="32.5">1</text>
+<text class="w-flabel" x="33" y="33">Interface</text>
+<line class="w-pin" x1="25" y1="80" x2="30" y2="80"/>
+<line class="w-pin" x1="160" y1="80" x2="165" y2="80"/>
+<rect class="w-node" x="30" y="60" width="130" height="40"/>
+<text class="w-ref" x="33" y="57">U1</text>
+<text class="w-name" x="95" y="84.5">TypeScript</text>
+<line class="w-pin" x1="25" y1="135" x2="30" y2="135"/>
+<line class="w-pin" x1="160" y1="135" x2="165" y2="135"/>
+<rect class="w-node" x="30" y="115" width="130" height="40"/>
+<text class="w-ref" x="33" y="112">U2</text>
+<text class="w-name" x="95" y="134">Angular</text>
+<text class="w-sub" x="95" y="147">signals</text>
+<line class="w-pin" x1="25" y1="190" x2="30" y2="190"/>
+<line class="w-pin" x1="160" y1="190" x2="165" y2="190"/>
+<rect class="w-node" x="30" y="170" width="130" height="40"/>
+<text class="w-ref" x="33" y="167">U3</text>
+<text class="w-name" x="95" y="194.5">React</text>
+<line class="w-pin" x1="25" y1="245" x2="30" y2="245"/>
+<line class="w-pin" x1="160" y1="245" x2="165" y2="245"/>
+<rect class="w-node" x="30" y="225" width="130" height="40"/>
+<text class="w-ref" x="33" y="222">U4</text>
+<text class="w-name" x="95" y="244">Blazor</text>
+<text class="w-sub" x="95" y="257">WebAssembly</text>
+<path class="w-wire" d="M165,80 H200 M165,135 H200 M165,190 H200 M165,245 H200 M200,80 V245"/>
+<circle class="w-dot" cx="200" cy="80" r="2.6"/>
+<circle class="w-dot" cx="200" cy="135" r="2.6"/>
+<circle class="w-dot" cx="200" cy="190" r="2.6"/>
+<circle class="w-dot" cx="200" cy="245" r="2.6"/>
+<path class="w-wire" d="M200,170 H385"/>
+<circle class="w-dot" cx="200" cy="170" r="2.6"/>
+<text class="w-blabel" x="300" y="184" text-anchor="middle">HTTPS · JSON</text>
+<line class="w-pin" x1="220" y1="92" x2="225" y2="92"/>
+<line class="w-pin" x1="355" y1="92" x2="360" y2="92"/>
+<rect class="w-node" x="225" y="72" width="130" height="40"/>
+<text class="w-ref" x="228" y="69">U5</text>
+<text class="w-name" x="290" y="91">Keycloak</text>
+<text class="w-sub" x="290" y="104">OpenID Connect</text>
+<path class="w-wire" d="M290,117 V170"/>
+<circle class="w-dot" cx="290" cy="170" r="2.6"/>
+<text class="w-blabel" x="297" y="146" text-anchor="start">OIDC</text>
+<rect class="w-frame" x="380" y="40" width="200" height="250"/>
+<circle class="w-ring" cx="389" cy="29" r="8"/>
+<text class="w-num" x="389" y="32.5">2</text>
+<text class="w-flabel" x="403" y="33">Services · .NET Aspire</text>
+<line class="w-pin" x1="405" y1="75" x2="410" y2="75"/>
+<line class="w-pin" x1="540" y1="75" x2="545" y2="75"/>
+<rect class="w-node" x="410" y="56" width="130" height="38"/>
+<text class="w-ref" x="413" y="53">U6</text>
+<text class="w-name" x="475" y="74">Minimal APIs</text>
+<text class="w-sub" x="475" y="87">ASP.NET Core</text>
+<line class="w-pin" x1="405" y1="127" x2="410" y2="127"/>
+<line class="w-pin" x1="540" y1="127" x2="545" y2="127"/>
+<rect class="w-node" x="410" y="108" width="130" height="38"/>
+<text class="w-ref" x="413" y="105">U7</text>
+<text class="w-name" x="475" y="131.5">FastEndpoints</text>
+<line class="w-pin" x1="405" y1="179" x2="410" y2="179"/>
+<line class="w-pin" x1="540" y1="179" x2="545" y2="179"/>
+<rect class="w-node" x="410" y="160" width="130" height="38"/>
+<text class="w-ref" x="413" y="157">U8</text>
+<text class="w-name" x="475" y="178">SignalR</text>
+<text class="w-sub" x="475" y="191">real time</text>
+<line class="w-pin" x1="405" y1="231" x2="410" y2="231"/>
+<line class="w-pin" x1="540" y1="231" x2="545" y2="231"/>
+<rect class="w-node" x="410" y="212" width="130" height="38"/>
+<text class="w-ref" x="413" y="209">U9</text>
+<text class="w-name" x="475" y="230">EF Core</text>
+<text class="w-sub" x="475" y="243">Entity Framework</text>
+<path class="w-wire" d="M390,75 V231 M390,75 H405 M390,127 H405 M390,179 H405 M390,231 H405"/>
+<circle class="w-dot" cx="390" cy="75" r="2.6"/>
+<circle class="w-dot" cx="390" cy="127" r="2.6"/>
+<circle class="w-dot" cx="390" cy="179" r="2.6"/>
+<circle class="w-dot" cx="390" cy="231" r="2.6"/>
+<circle class="w-dot" cx="390" cy="170" r="2.6"/>
+<path class="w-wire" d="M545,75 H560 M545,127 H560 M545,179 H560 M545,231 H560 M560,75 V231"/>
+<circle class="w-dot" cx="560" cy="75" r="2.6"/>
+<circle class="w-dot" cx="560" cy="127" r="2.6"/>
+<circle class="w-dot" cx="560" cy="179" r="2.6"/>
+<circle class="w-dot" cx="560" cy="231" r="2.6"/>
+<text class="w-blabel" x="480" y="280" text-anchor="middle">Clean Architecture · CQRS</text>
+<path class="w-wire" d="M560,170 H595"/>
+<circle class="w-dot" cx="560" cy="170" r="2.6"/>
+<text class="w-blabel" x="578" y="162" text-anchor="middle">data</text>
+<rect class="w-frame" x="605" y="40" width="165" height="345"/>
+<circle class="w-ring" cx="614" cy="29" r="8"/>
+<text class="w-num" x="614" y="32.5">3</text>
+<text class="w-flabel" x="628" y="33">Data and messaging</text>
+<line class="w-pin" x1="620" y1="71" x2="625" y2="71"/>
+<line class="w-pin" x1="750" y1="71" x2="755" y2="71"/>
+<rect class="w-node" x="625" y="54" width="125" height="34"/>
+<text class="w-ref" x="628" y="51">U10</text>
+<text class="w-name" x="687.5" y="75.5">PostgreSQL</text>
+<line class="w-pin" x1="620" y1="117" x2="625" y2="117"/>
+<line class="w-pin" x1="750" y1="117" x2="755" y2="117"/>
+<rect class="w-node" x="625" y="100" width="125" height="34"/>
+<text class="w-ref" x="628" y="97">U11</text>
+<text class="w-name" x="687.5" y="121.5">SQL Server</text>
+<line class="w-pin" x1="620" y1="163" x2="625" y2="163"/>
+<line class="w-pin" x1="750" y1="163" x2="755" y2="163"/>
+<rect class="w-node" x="625" y="146" width="125" height="34"/>
+<text class="w-ref" x="628" y="143">U12</text>
+<text class="w-name" x="687.5" y="167.5">MongoDB</text>
+<line class="w-pin" x1="620" y1="209" x2="625" y2="209"/>
+<line class="w-pin" x1="750" y1="209" x2="755" y2="209"/>
+<rect class="w-node" x="625" y="192" width="125" height="34"/>
+<text class="w-ref" x="628" y="189">U13</text>
+<text class="w-name" x="687.5" y="208">Redis</text>
+<text class="w-sub" x="687.5" y="221">cache</text>
+<line class="w-pin" x1="620" y1="255" x2="625" y2="255"/>
+<line class="w-pin" x1="750" y1="255" x2="755" y2="255"/>
+<rect class="w-node" x="625" y="238" width="125" height="34"/>
+<text class="w-ref" x="628" y="235">U14</text>
+<text class="w-name" x="687.5" y="254">Elasticsearch</text>
+<text class="w-sub" x="687.5" y="267">search</text>
+<line class="w-pin" x1="620" y1="301" x2="625" y2="301"/>
+<line class="w-pin" x1="750" y1="301" x2="755" y2="301"/>
+<rect class="w-node" x="625" y="284" width="125" height="34"/>
+<text class="w-ref" x="628" y="281">U15</text>
+<text class="w-name" x="687.5" y="300">RabbitMQ</text>
+<text class="w-sub" x="687.5" y="313">AMQP</text>
+<line class="w-pin" x1="620" y1="347" x2="625" y2="347"/>
+<line class="w-pin" x1="750" y1="347" x2="755" y2="347"/>
+<rect class="w-node" x="625" y="330" width="125" height="34"/>
+<text class="w-ref" x="628" y="327">U16</text>
+<text class="w-name" x="687.5" y="346">MinIO</text>
+<text class="w-sub" x="687.5" y="359">object storage</text>
+<path class="w-wire" d="M595,71 V347 M595,71 H620 M595,117 H620 M595,163 H620 M595,209 H620 M595,255 H620 M595,301 H620 M595,347 H620"/>
+<circle class="w-dot" cx="595" cy="71" r="2.6"/>
+<circle class="w-dot" cx="595" cy="117" r="2.6"/>
+<circle class="w-dot" cx="595" cy="163" r="2.6"/>
+<circle class="w-dot" cx="595" cy="209" r="2.6"/>
+<circle class="w-dot" cx="595" cy="255" r="2.6"/>
+<circle class="w-dot" cx="595" cy="301" r="2.6"/>
+<circle class="w-dot" cx="595" cy="347" r="2.6"/>
+<circle class="w-dot" cx="595" cy="170" r="2.6"/>
+<rect class="w-frame" x="10" y="335" width="170" height="105"/>
+<text class="w-flabel" x="10" y="328">Websites for small businesses</text>
+<line class="w-pin" x1="25" y1="365" x2="30" y2="365"/>
+<line class="w-pin" x1="160" y1="365" x2="165" y2="365"/>
+<rect class="w-node" x="30" y="350" width="130" height="30"/>
+<text class="w-ref" x="33" y="347">U17</text>
+<text class="w-name" x="95" y="369.5">Astro</text>
+<line class="w-pin" x1="25" y1="415" x2="30" y2="415"/>
+<line class="w-pin" x1="160" y1="415" x2="165" y2="415"/>
+<rect class="w-node" x="30" y="400" width="130" height="30"/>
+<text class="w-ref" x="33" y="397">U18</text>
+<text class="w-name" x="95" y="419.5">Cloudflare</text>
+<path class="w-wire" d="M95,385 L95,394"/>
+<path class="w-head" d="M95,394 L97.9,387.6 L92.1,387.6 Z"/>
+<rect class="w-frame" x="10" y="478" width="760" height="82"/>
+<circle class="w-ring" cx="19" cy="467" r="8"/>
+<text class="w-num" x="19" y="470.5">4</text>
+<text class="w-flabel" x="33" y="471">Delivery pipeline</text>
+<line class="w-pin" x1="17" y1="519" x2="22" y2="519"/>
+<line class="w-pin" x1="92" y1="519" x2="97" y2="519"/>
+<rect class="w-node" x="22" y="499" width="70" height="40"/>
+<text class="w-ref" x="25" y="496">U19</text>
+<text class="w-name" x="57" y="518">Git</text>
+<text class="w-sub" x="57" y="531">GitFlow</text>
+<path class="w-wire" d="M97,519 L101,519"/>
+<path class="w-head" d="M101,519 L94.6,516.1 L94.6,521.9 Z"/>
+<line class="w-pin" x1="101" y1="519" x2="106" y2="519"/>
+<line class="w-pin" x1="176" y1="519" x2="181" y2="519"/>
+<rect class="w-node" x="106" y="499" width="70" height="40"/>
+<text class="w-ref" x="109" y="496">U20</text>
+<text class="w-name" x="141" y="518">Tests</text>
+<text class="w-sub" x="141" y="531">xUnit</text>
+<path class="w-wire sec" d="M181,519 L185,519"/>
+<path class="w-head sec" d="M185,519 L178.6,516.1 L178.6,521.9 Z"/>
+<line class="w-pin" x1="185" y1="519" x2="190" y2="519"/>
+<line class="w-pin" x1="260" y1="519" x2="265" y2="519"/>
+<rect class="w-node sec" x="190" y="499" width="70" height="40"/>
+<text class="w-ref" x="193" y="496">U21</text>
+<text class="w-name" x="225" y="518">SAST</text>
+<text class="w-sub" x="225" y="531">code</text>
+<path class="w-wire sec" d="M265,519 L269,519"/>
+<path class="w-head sec" d="M269,519 L262.6,516.1 L262.6,521.9 Z"/>
+<line class="w-pin" x1="269" y1="519" x2="274" y2="519"/>
+<line class="w-pin" x1="344" y1="519" x2="349" y2="519"/>
+<rect class="w-node sec" x="274" y="499" width="70" height="40"/>
+<text class="w-ref" x="277" y="496">U22</text>
+<text class="w-name" x="309" y="518">SCA</text>
+<text class="w-sub" x="309" y="531">Trivy</text>
+<path class="w-wire sec" d="M349,519 L353,519"/>
+<path class="w-head sec" d="M353,519 L346.6,516.1 L346.6,521.9 Z"/>
+<line class="w-pin" x1="353" y1="519" x2="358" y2="519"/>
+<line class="w-pin" x1="428" y1="519" x2="433" y2="519"/>
+<rect class="w-node sec" x="358" y="499" width="70" height="40"/>
+<text class="w-ref" x="361" y="496">U23</text>
+<text class="w-name" x="393" y="518">Secrets</text>
+<text class="w-sub" x="393" y="531">Gitleaks</text>
+<path class="w-wire sec" d="M433,519 L437,519"/>
+<path class="w-head sec" d="M437,519 L430.6,516.1 L430.6,521.9 Z"/>
+<line class="w-pin" x1="437" y1="519" x2="442" y2="519"/>
+<line class="w-pin" x1="512" y1="519" x2="517" y2="519"/>
+<rect class="w-node sec" x="442" y="499" width="70" height="40"/>
+<text class="w-ref" x="445" y="496">U24</text>
+<text class="w-name" x="477" y="518">SBOM</text>
+<text class="w-sub" x="477" y="531">CVE</text>
+<path class="w-wire sec" d="M517,519 L521,519"/>
+<path class="w-head sec" d="M521,519 L514.6,516.1 L514.6,521.9 Z"/>
+<line class="w-pin" x1="524" y1="519" x2="529" y2="519"/>
+<line class="w-pin" x1="593" y1="519" x2="598" y2="519"/>
+<path class="w-node sec" d="M529,519 L561,499 L593,519 L561,539 Z"/>
+<text class="w-ref" x="575.4" y="507">U25</text>
+<text class="w-name" x="561" y="523.5">Gate</text>
+<path class="w-wire" d="M601,519 L605,519"/>
+<path class="w-head" d="M605,519 L598.6,516.1 L598.6,521.9 Z"/>
+<line class="w-pin" x1="605" y1="519" x2="610" y2="519"/>
+<line class="w-pin" x1="680" y1="519" x2="685" y2="519"/>
+<rect class="w-node" x="610" y="499" width="70" height="40"/>
+<text class="w-ref" x="613" y="496">U26</text>
+<text class="w-name" x="645" y="518">Docker</text>
+<text class="w-sub" x="645" y="531">image</text>
+<path class="w-wire" d="M685,519 L689,519"/>
+<path class="w-head" d="M689,519 L682.6,516.1 L682.6,521.9 Z"/>
+<line class="w-pin" x1="689" y1="519" x2="694" y2="519"/>
+<line class="w-pin" x1="764" y1="519" x2="769" y2="519"/>
+<rect class="w-node" x="694" y="499" width="70" height="40"/>
+<text class="w-ref" x="697" y="496">U27</text>
+<text class="w-name" x="729" y="518">Azure</text>
+<text class="w-sub" x="729" y="531">deploy</text>
+<path class="w-wire" d="M729,494 V458 H480"/>
+<path class="w-wire" d="M480,458 L480,296"/>
+<path class="w-head" d="M480,296 L477.1,302.4 L482.9,302.4 Z"/>
+<text class="w-blabel" x="488" y="380" text-anchor="start">deploys</text>
+</svg>
+<svg class="wiring wiring-narrow" viewBox="0 0 340 1070" role="img" aria-labelledby="fig2n-title" aria-describedby="fig2n-desc">
+<title id="fig2n-title">Wiring diagram of the stack I work with</title>
+<desc id="fig2n-desc">Interface: TypeScript, Angular, React and Blazor WebAssembly, connected over HTTPS to services orchestrated with .NET Aspire: ASP.NET Core Minimal APIs, FastEndpoints, SignalR and Entity Framework Core, with Keycloak for OpenID Connect. The services use PostgreSQL, SQL Server, MongoDB, Redis, Elasticsearch, RabbitMQ and MinIO. Delivery pipeline: Git, tests, static analysis, dependency scanning with Trivy, secret scanning with Gitleaks, SBOM, a release gate, Docker and Azure. Websites for small businesses: Astro on Cloudflare.</desc>
+<rect class="w-frame" x="10" y="34" width="320" height="130"/>
+<circle class="w-ring" cx="19" cy="23" r="8"/>
+<text class="w-num" x="19" y="26.5">1</text>
+<text class="w-flabel" x="33" y="27">Interface</text>
+<line class="w-pin" x1="23" y1="72" x2="28" y2="72"/>
+<line class="w-pin" x1="158" y1="72" x2="163" y2="72"/>
+<rect class="w-node" x="28" y="52" width="130" height="40"/>
+<text class="w-ref" x="31" y="49">U1</text>
+<text class="w-name" x="93" y="76.5">TypeScript</text>
+<line class="w-pin" x1="177" y1="72" x2="182" y2="72"/>
+<line class="w-pin" x1="312" y1="72" x2="317" y2="72"/>
+<rect class="w-node" x="182" y="52" width="130" height="40"/>
+<text class="w-ref" x="185" y="49">U2</text>
+<text class="w-name" x="247" y="71">Angular</text>
+<text class="w-sub" x="247" y="84">signals</text>
+<line class="w-pin" x1="23" y1="128" x2="28" y2="128"/>
+<line class="w-pin" x1="158" y1="128" x2="163" y2="128"/>
+<rect class="w-node" x="28" y="108" width="130" height="40"/>
+<text class="w-ref" x="31" y="105">U3</text>
+<text class="w-name" x="93" y="132.5">React</text>
+<line class="w-pin" x1="177" y1="128" x2="182" y2="128"/>
+<line class="w-pin" x1="312" y1="128" x2="317" y2="128"/>
+<rect class="w-node" x="182" y="108" width="130" height="40"/>
+<text class="w-ref" x="185" y="105">U4</text>
+<text class="w-name" x="247" y="127">Blazor</text>
+<text class="w-sub" x="247" y="140">WebAssembly</text>
+<path class="w-wire" d="M110,164 L110,240"/>
+<path class="w-head" d="M110,240 L112.9,233.6 L107.1,233.6 Z"/>
+<text class="w-blabel" x="102" y="214" text-anchor="end">HTTPS · JSON</text>
+<line class="w-pin" x1="173" y1="206" x2="178" y2="206"/>
+<line class="w-pin" x1="318" y1="206" x2="323" y2="206"/>
+<rect class="w-node" x="178" y="186" width="140" height="40"/>
+<text class="w-ref" x="181" y="183">U5</text>
+<text class="w-name" x="248" y="205">Keycloak</text>
+<text class="w-sub" x="248" y="218">OpenID Connect</text>
+<path class="w-wire" d="M110,206 H173"/>
+<circle class="w-dot" cx="110" cy="206" r="2.6"/>
+<text class="w-blabel" x="140" y="199" text-anchor="middle">OIDC</text>
+<rect class="w-frame" x="10" y="262" width="320" height="148"/>
+<circle class="w-ring" cx="19" cy="251" r="8"/>
+<text class="w-num" x="19" y="254.5">2</text>
+<text class="w-flabel" x="33" y="255">Services · .NET Aspire</text>
+<line class="w-pin" x1="23" y1="299" x2="28" y2="299"/>
+<line class="w-pin" x1="158" y1="299" x2="163" y2="299"/>
+<rect class="w-node" x="28" y="280" width="130" height="38"/>
+<text class="w-ref" x="31" y="277">U6</text>
+<text class="w-name" x="93" y="298">Minimal APIs</text>
+<text class="w-sub" x="93" y="311">ASP.NET Core</text>
+<line class="w-pin" x1="177" y1="299" x2="182" y2="299"/>
+<line class="w-pin" x1="312" y1="299" x2="317" y2="299"/>
+<rect class="w-node" x="182" y="280" width="130" height="38"/>
+<text class="w-ref" x="185" y="277">U7</text>
+<text class="w-name" x="247" y="303.5">FastEndpoints</text>
+<line class="w-pin" x1="23" y1="353" x2="28" y2="353"/>
+<line class="w-pin" x1="158" y1="353" x2="163" y2="353"/>
+<rect class="w-node" x="28" y="334" width="130" height="38"/>
+<text class="w-ref" x="31" y="331">U8</text>
+<text class="w-name" x="93" y="352">SignalR</text>
+<text class="w-sub" x="93" y="365">real time</text>
+<line class="w-pin" x1="177" y1="353" x2="182" y2="353"/>
+<line class="w-pin" x1="312" y1="353" x2="317" y2="353"/>
+<rect class="w-node" x="182" y="334" width="130" height="38"/>
+<text class="w-ref" x="185" y="331">U9</text>
+<text class="w-name" x="247" y="352">EF Core</text>
+<text class="w-sub" x="247" y="365">Entity Framework</text>
+<text class="w-blabel" x="170" y="400" text-anchor="middle">Clean Architecture · CQRS</text>
+<path class="w-wire" d="M170,410 L170,446"/>
+<path class="w-head" d="M170,446 L172.9,439.6 L167.1,439.6 Z"/>
+<text class="w-blabel" x="178" y="432" text-anchor="start">data</text>
+<rect class="w-frame" x="10" y="468" width="320" height="206"/>
+<circle class="w-ring" cx="19" cy="457" r="8"/>
+<text class="w-num" x="19" y="460.5">3</text>
+<text class="w-flabel" x="33" y="461">Data and messaging</text>
+<line class="w-pin" x1="23" y1="503" x2="28" y2="503"/>
+<line class="w-pin" x1="158" y1="503" x2="163" y2="503"/>
+<rect class="w-node" x="28" y="486" width="130" height="34"/>
+<text class="w-ref" x="31" y="483">U10</text>
+<text class="w-name" x="93" y="507.5">PostgreSQL</text>
+<line class="w-pin" x1="177" y1="503" x2="182" y2="503"/>
+<line class="w-pin" x1="312" y1="503" x2="317" y2="503"/>
+<rect class="w-node" x="182" y="486" width="130" height="34"/>
+<text class="w-ref" x="185" y="483">U11</text>
+<text class="w-name" x="247" y="507.5">SQL Server</text>
+<line class="w-pin" x1="23" y1="549" x2="28" y2="549"/>
+<line class="w-pin" x1="158" y1="549" x2="163" y2="549"/>
+<rect class="w-node" x="28" y="532" width="130" height="34"/>
+<text class="w-ref" x="31" y="529">U12</text>
+<text class="w-name" x="93" y="553.5">MongoDB</text>
+<line class="w-pin" x1="177" y1="549" x2="182" y2="549"/>
+<line class="w-pin" x1="312" y1="549" x2="317" y2="549"/>
+<rect class="w-node" x="182" y="532" width="130" height="34"/>
+<text class="w-ref" x="185" y="529">U13</text>
+<text class="w-name" x="247" y="548">Redis</text>
+<text class="w-sub" x="247" y="561">cache</text>
+<line class="w-pin" x1="23" y1="595" x2="28" y2="595"/>
+<line class="w-pin" x1="158" y1="595" x2="163" y2="595"/>
+<rect class="w-node" x="28" y="578" width="130" height="34"/>
+<text class="w-ref" x="31" y="575">U14</text>
+<text class="w-name" x="93" y="594">Elasticsearch</text>
+<text class="w-sub" x="93" y="607">search</text>
+<line class="w-pin" x1="177" y1="595" x2="182" y2="595"/>
+<line class="w-pin" x1="312" y1="595" x2="317" y2="595"/>
+<rect class="w-node" x="182" y="578" width="130" height="34"/>
+<text class="w-ref" x="185" y="575">U15</text>
+<text class="w-name" x="247" y="594">RabbitMQ</text>
+<text class="w-sub" x="247" y="607">AMQP</text>
+<line class="w-pin" x1="23" y1="641" x2="28" y2="641"/>
+<line class="w-pin" x1="158" y1="641" x2="163" y2="641"/>
+<rect class="w-node" x="28" y="624" width="130" height="34"/>
+<text class="w-ref" x="31" y="621">U16</text>
+<text class="w-name" x="93" y="640">MinIO</text>
+<text class="w-sub" x="93" y="653">object storage</text>
+<rect class="w-frame" x="10" y="712" width="320" height="232"/>
+<circle class="w-ring" cx="19" cy="701" r="8"/>
+<text class="w-num" x="19" y="704.5">4</text>
+<text class="w-flabel" x="33" y="705">Delivery pipeline</text>
+<line class="w-pin" x1="21" y1="752" x2="26" y2="752"/>
+<line class="w-pin" x1="110" y1="752" x2="115" y2="752"/>
+<rect class="w-node" x="26" y="732" width="84" height="40"/>
+<text class="w-ref" x="29" y="729">U17</text>
+<text class="w-name" x="68" y="751">Git</text>
+<text class="w-sub" x="68" y="764">GitFlow</text>
+<path class="w-wire" d="M115,752 L123,752"/>
+<path class="w-head" d="M123,752 L116.6,749.1 L116.6,754.9 Z"/>
+<line class="w-pin" x1="123" y1="752" x2="128" y2="752"/>
+<line class="w-pin" x1="212" y1="752" x2="217" y2="752"/>
+<rect class="w-node" x="128" y="732" width="84" height="40"/>
+<text class="w-ref" x="131" y="729">U18</text>
+<text class="w-name" x="170" y="751">Tests</text>
+<text class="w-sub" x="170" y="764">xUnit</text>
+<path class="w-wire sec" d="M217,752 L225,752"/>
+<path class="w-head sec" d="M225,752 L218.6,749.1 L218.6,754.9 Z"/>
+<line class="w-pin" x1="225" y1="752" x2="230" y2="752"/>
+<line class="w-pin" x1="314" y1="752" x2="319" y2="752"/>
+<rect class="w-node sec" x="230" y="732" width="84" height="40"/>
+<text class="w-ref" x="233" y="729">U19</text>
+<text class="w-name" x="272" y="751">SAST</text>
+<text class="w-sub" x="272" y="764">code</text>
+<path class="w-wire sec" d="M272,772 V786 H68"/>
+<path class="w-wire sec" d="M68,786 L68,799"/>
+<path class="w-head sec" d="M68,799 L70.9,792.6 L65.1,792.6 Z"/>
+<line class="w-pin" x1="21" y1="820" x2="26" y2="820"/>
+<line class="w-pin" x1="110" y1="820" x2="115" y2="820"/>
+<rect class="w-node sec" x="26" y="800" width="84" height="40"/>
+<text class="w-ref" x="29" y="797">U20</text>
+<text class="w-name" x="68" y="819">SCA</text>
+<text class="w-sub" x="68" y="832">Trivy</text>
+<path class="w-wire sec" d="M115,820 L123,820"/>
+<path class="w-head sec" d="M123,820 L116.6,817.1 L116.6,822.9 Z"/>
+<line class="w-pin" x1="123" y1="820" x2="128" y2="820"/>
+<line class="w-pin" x1="212" y1="820" x2="217" y2="820"/>
+<rect class="w-node sec" x="128" y="800" width="84" height="40"/>
+<text class="w-ref" x="131" y="797">U21</text>
+<text class="w-name" x="170" y="819">Secrets</text>
+<text class="w-sub" x="170" y="832">Gitleaks</text>
+<path class="w-wire sec" d="M217,820 L225,820"/>
+<path class="w-head sec" d="M225,820 L218.6,817.1 L218.6,822.9 Z"/>
+<line class="w-pin" x1="225" y1="820" x2="230" y2="820"/>
+<line class="w-pin" x1="314" y1="820" x2="319" y2="820"/>
+<rect class="w-node sec" x="230" y="800" width="84" height="40"/>
+<text class="w-ref" x="233" y="797">U22</text>
+<text class="w-name" x="272" y="819">SBOM</text>
+<text class="w-sub" x="272" y="832">CVE</text>
+<path class="w-wire sec" d="M272,840 V854 H68"/>
+<path class="w-wire sec" d="M68,854 L68,867"/>
+<path class="w-head sec" d="M68,867 L70.9,860.6 L65.1,860.6 Z"/>
+<line class="w-pin" x1="29" y1="888" x2="34" y2="888"/>
+<line class="w-pin" x1="102" y1="888" x2="107" y2="888"/>
+<path class="w-node sec" d="M34,888 L68,867 L102,888 L68,909 Z"/>
+<text class="w-ref" x="83.3" y="875.4">U23</text>
+<text class="w-name" x="68" y="892.5">Gate</text>
+<path class="w-wire" d="M115,888 L123,888"/>
+<path class="w-head" d="M123,888 L116.6,885.1 L116.6,890.9 Z"/>
+<line class="w-pin" x1="123" y1="888" x2="128" y2="888"/>
+<line class="w-pin" x1="212" y1="888" x2="217" y2="888"/>
+<rect class="w-node" x="128" y="868" width="84" height="40"/>
+<text class="w-ref" x="131" y="865">U24</text>
+<text class="w-name" x="170" y="887">Docker</text>
+<text class="w-sub" x="170" y="900">image</text>
+<path class="w-wire" d="M217,888 L225,888"/>
+<path class="w-head" d="M225,888 L218.6,885.1 L218.6,890.9 Z"/>
+<line class="w-pin" x1="225" y1="888" x2="230" y2="888"/>
+<line class="w-pin" x1="314" y1="888" x2="319" y2="888"/>
+<rect class="w-node" x="230" y="868" width="84" height="40"/>
+<text class="w-ref" x="233" y="865">U25</text>
+<text class="w-name" x="272" y="887">Azure</text>
+<text class="w-sub" x="272" y="900">deploy</text>
+<text class="w-blabel" x="170" y="934" text-anchor="middle">Azure deploys the services in 2</text>
+<rect class="w-frame" x="10" y="984" width="320" height="70"/>
+<text class="w-flabel" x="10" y="977">Websites for small businesses</text>
+<line class="w-pin" x1="23" y1="1019" x2="28" y2="1019"/>
+<line class="w-pin" x1="148" y1="1019" x2="153" y2="1019"/>
+<rect class="w-node" x="28" y="1002" width="120" height="34"/>
+<text class="w-ref" x="31" y="999">U26</text>
+<text class="w-name" x="88" y="1023.5">Astro</text>
+<line class="w-pin" x1="187" y1="1019" x2="192" y2="1019"/>
+<line class="w-pin" x1="312" y1="1019" x2="317" y2="1019"/>
+<rect class="w-node" x="192" y="1002" width="120" height="34"/>
+<text class="w-ref" x="195" y="999">U27</text>
+<text class="w-name" x="252" y="1023.5">Cloudflare</text>
+<path class="w-wire" d="M153,1019 L187,1019"/>
+<path class="w-head" d="M187,1019 L180.6,1016.1 L180.6,1021.9 Z"/>
+</svg>
+<!-- wiring:end -->
+          <figcaption><span class="fig-no">Fig. 2</span> How the parts I work with connect. Assemblies 1 to 4 match Fig. 1; the orange parts are the security controls.</figcaption>
+        </figure>
       </section>
 
       <section aria-labelledby="s5">
